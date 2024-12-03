@@ -7,6 +7,8 @@ namespace BetterDialogue
     public class DialogueNode : ScriptableObject
     {
         [SerializeField]
+        public bool isPlayerSpeaking = false;
+        [SerializeField]
         string text;
         [SerializeField]
         List<string> children = new List<string>();
@@ -33,6 +35,7 @@ namespace BetterDialogue
         {
             Undo.RecordObject(this, "Move Dialogue Node");
             rect.position = newPosition;
+            EditorUtility.SetDirty(this);
         }
 
         public void SetText(string newText)
@@ -41,6 +44,7 @@ namespace BetterDialogue
             {
                 Undo.RecordObject(this, "Update Dialogue Text");
                 text = newText;
+                EditorUtility.SetDirty(this);
             }
         }
 
@@ -48,12 +52,14 @@ namespace BetterDialogue
         {
             Undo.RecordObject(this, "Add Dialogue Link");
             children.Add(childID);
+            EditorUtility.SetDirty(this);
         }
 
         public void RemoveChild(string childID)
         {
             Undo.RecordObject(this, "Remove Dialogue Link");
             children.Remove(childID);
+            EditorUtility.SetDirty(this);
         }
 #endif
     }

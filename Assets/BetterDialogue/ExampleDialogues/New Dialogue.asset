@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59223dd238e2054689578804e1d74c8, type: 3}
   m_Name: fcf7a317-27ec-475c-bc44-5544d29163c3
   m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
   text: 
-  children: []
+  children:
+  - d8a03c4a-568f-43d8-81b8-d0807a7076af
+  - 3d22946b-621f-4683-ba96-f8dddc5e5fa0
   rect:
     serializedVersion: 2
-    x: 177
-    y: 125
+    x: 125
+    y: 192
     width: 200
     height: 100
 --- !u!114 &11400000
@@ -34,3 +37,71 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -6948730676547967653}
+  - {fileID: 6238105024015171862}
+  - {fileID: 3036011577683650799}
+  - {fileID: 7364022907778240660}
+--- !u!114 &3036011577683650799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59223dd238e2054689578804e1d74c8, type: 3}
+  m_Name: 3d22946b-621f-4683-ba96-f8dddc5e5fa0
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: 
+  children:
+  - 2112deef-2e47-4aa1-81cb-ec6eecd97d20
+  rect:
+    serializedVersion: 2
+    x: 451
+    y: 314
+    width: 200
+    height: 100
+--- !u!114 &6238105024015171862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59223dd238e2054689578804e1d74c8, type: 3}
+  m_Name: d8a03c4a-568f-43d8-81b8-d0807a7076af
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: 
+  children:
+  - 2112deef-2e47-4aa1-81cb-ec6eecd97d20
+  rect:
+    serializedVersion: 2
+    x: 443
+    y: 71
+    width: 200
+    height: 100
+--- !u!114 &7364022907778240660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59223dd238e2054689578804e1d74c8, type: 3}
+  m_Name: 2112deef-2e47-4aa1-81cb-ec6eecd97d20
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 730
+    y: 179
+    width: 200
+    height: 100

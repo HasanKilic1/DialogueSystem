@@ -11,6 +11,9 @@ namespace BetterDialogue
         [NonSerialized]
         GUIStyle nodeStyle;
         [NonSerialized]
+        GUIStyle playerNodeStyle;
+        bool isPlayerNode;
+        [NonSerialized]
         DialogueNode draggingNode = null;
         [NonSerialized]
         Vector2 draggingOffset;
@@ -56,6 +59,12 @@ namespace BetterDialogue
             nodeStyle.normal.textColor = Color.white;
             nodeStyle.padding = new RectOffset(20, 20, 20, 20);
             nodeStyle.border = new RectOffset(12, 12, 12, 12);
+
+            playerNodeStyle = new GUIStyle();
+            playerNodeStyle.normal.background = EditorGUIUtility.Load("node1") as Texture2D;
+            playerNodeStyle.normal.textColor = Color.white;
+            playerNodeStyle.padding = new RectOffset(20, 20, 20, 20);
+            playerNodeStyle.border = new RectOffset(12, 12, 12, 12);
         }
 
         private void OnSelectionChanged()
@@ -151,18 +160,25 @@ namespace BetterDialogue
 
         private void DrawNode(DialogueNode node)
         {
-            GUILayout.BeginArea(node.GetRect(), nodeStyle);
+            GUIStyle style = nodeStyle;
+            if (node.isPlayerSpeaking) style = playerNodeStyle;
+
+            GUILayout.BeginArea(node.GetRect(), style);
+
             EditorGUI.BeginChangeCheck();
+            DrawToggle(node);
 
             node.SetText(EditorGUILayout.TextField(node.GetText()));
 
             GUILayout.BeginHorizontal();
 
-            if (GUILayout.Button("x"))
+            if (GUILayout.Button("-"))
             {
                 deletingNode = node;
             }
+
             DrawLinkButtons(node);
+
             if (GUILayout.Button("+"))
             {
                 creatingNode = node;
@@ -171,6 +187,14 @@ namespace BetterDialogue
             GUILayout.EndHorizontal();
 
             GUILayout.EndArea();
+        }
+
+        private static void DrawToggle(DialogueNode node)
+        {
+            GUIStyle toggleStyle = new GUIStyle(EditorStyles.toggle);
+            toggleStyle.fontStyle = FontStyle.Bold;
+            string info = node.isPlayerSpeaking ? "Player sentence" : "NPC sentence";
+            node.isPlayerSpeaking = EditorGUILayout.Toggle(info, node.isPlayerSpeaking, toggleStyle);
         }
 
         private void DrawLinkButtons(DialogueNode node)

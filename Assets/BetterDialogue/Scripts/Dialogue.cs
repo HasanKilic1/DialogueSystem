@@ -57,7 +57,7 @@ namespace BetterDialogue
             nodes.Add(newNode);
         }
 
-        private static DialogueNode MakeNode(DialogueNode parent)
+        private DialogueNode MakeNode(DialogueNode parent)
         {
             DialogueNode newNode = CreateInstance<DialogueNode>();
             newNode.name = Guid.NewGuid().ToString();
@@ -65,6 +65,8 @@ namespace BetterDialogue
             {
                 newNode.SetPosition(parent.GetRect().position + Vector2.right * parent.GetRect().width);
                 parent.AddChild(newNode.name);
+
+                newNode.isPlayerSpeaking = !parent.isPlayerSpeaking;
             }
 
             return newNode;
